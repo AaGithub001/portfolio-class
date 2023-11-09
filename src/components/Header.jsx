@@ -26,6 +26,8 @@ const Header = () => {
     <Link to ="/about" className={`font-bold text-1.5xl text-red-600 hover:text-red-800 hover:border-b-4 hover:border-red-800 ${isActive('/about')}`}> About</Link>
     <Link to ="/service" className={`font-bold text-1.5xl text-red-600 hover:text-red-800 hover:border-b-4 hover:border-red-800 ${isActive('/service')}`}> Service</Link>
     <Link to ="/contact" className={`font-bold text-1.5xl text-red-600 hover:text-red-800 hover:border-b-4 hover:border-red-800 ${isActive('/contact')}`}> Contact</Link>
+    <Link to ="/profile" className={`font-bold text-1.5xl text-red-600 hover:text-red-800 hover:border-b-4 hover:border-red-800 ${isActive('/profile')}`}> Profile</Link>
+
   </div>
 </nav>
     <div className="sm:hidden flex justify-between items-center px-4  bg-cyan-300 h-[60px]">
@@ -43,11 +45,7 @@ const Header = () => {
         <Link to="/about" className="font-bold text-1.5xl">About</Link>
         <Link to="/contact" className="font-bold text-1.5xl">Contacts</Link>
         <Link to="/service" className="font-bold text-1.5xl">Services</Link>
-
-
-
-
-        
+        <Link to="/service" className="font-bold text-1.5xl">Profile</Link>
       </div>
       )}
 </>

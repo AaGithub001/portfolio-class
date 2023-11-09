@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,29 +12,37 @@ const Contact = () => {
   const[address, setAddress] = useState("");
   const[email, setEmail] = useState("");
   const[message,setMessage] = useState("");
+  const [errmsg,setErrmsg] = useState("")
 
-  console.log(firstname);
-  console.log(lastname);
-  console.log(phone);
-  console.log(address);
-  console.log(email);
-  console.log(message);
+
 
   
   
   const handleClick = (e) => {
   e.preventDefault();
-    if (firstname && lastname &&phone && address && email && message )
+    if (firstname && lastname && phone &&address && email && message)
     {
-    toast("form submit successfully");
-    setFirstname("");
+    console.log("submit");
+
+    const formdata = new FormData();
+    formdata.append("firstname",firstname);
+    formdata.append("lastname",lastname);
+    formdata.append("phone",phone);
+    formdata.append("address",address);
+    formdata.append("email",email);
+    formdata.append("message",message);
+
+   axios.post("https://achyut.acetechnepal.com/contact/",formdata)
+      .then(res=>toast("form submit successfully"));
     setLastname("");
     setPhone("");
     setAddress("");
     setEmail("");
     setMessage("");
+
   }
   else if(!firstname) {
+    setErrmsg("fill firstname")
   toast("Please fill the Firstname");
   }
   else if(!lastname) {
@@ -66,6 +75,7 @@ const Contact = () => {
   <div className='flex flex-col'>
     <label className='mr-3 '>Firstname</label>
     <input value={firstname} required onChange={e => setFirstname(e.target.value)} type="text" name='      firstname' placeholder='firstname' className='px-3 py-2 rounded-md  border-blue-400 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-violet-700'/>
+     <p className='text-red-500'>{errmsg}</p>
   </div>
   <div className='flex flex-col '>
     <label className='mr-3'>Lastname</label>
@@ -98,3 +108,6 @@ const Contact = () => {
 }
 
 export default Contact
+
+
+
